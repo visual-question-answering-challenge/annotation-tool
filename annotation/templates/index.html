@@ -1,0 +1,69 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container" style="margin-top: 10px">
+    {% csrf_token %}
+    <div id="content">
+
+        <div class="row" id="header">
+
+            <nav class="teal lighten-2" style="border-radius:10px;">
+                <div class="nav-wrapper " >
+                    <a href="#" class="brand-logo" style="padding-left: 20px">You are logged as
+                        <span style="color:black">
+                            <b>{{user.get_username | title}}</b>
+                        </span>
+                    </a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li>
+                            <a class="waves-effect waves-light btn-large modal-trigger" href="#modal1">What I have to do?</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div id="form_content">
+            {% include "form.html" %}
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal  WHAT I HAVE TO DO -->
+<div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4>Instructions</h4>
+        <p>Matter and energy had ended and with it, space and time. Even AC existed only for the sake of the one last question
+            that it had never answered from the time a half-drunken computer ten trillion years before had asked the question
+            of a computer that was to AC far less than was a man to Man. All other questions had been answered, and until
+            this last question was answered also, AC might not release his consciousness. All collected data had come to
+            a final end. Nothing was left to be collected. But all collected data had yet to be completely correlated and
+            put together in all possible relationships. A timeless interval was spent in doing that. And it came to pass
+            that AC learned how to reverse the direction of entropy. But there was now no man to whom AC might give the answer
+            of the last question. No matter. The answer -- by demonstration -- would take care of that, too. For another
+            timeless interval, AC thought how best to do this. Carefully, AC organized the program. The consciousness of
+            AC encompassed all of what had once been a Universe and brooded over what was now Chaos. Step by step, it must
+            be done. And AC said, "LET THERE BE LIGHT!" And there was light----</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Ok</a>
+    </div>
+</div>
+
+
+<!-- Modal ERROR empty question -->
+<div id="modal2" class="modal">
+    <div class="modal-content">
+        <h4>ERROR</h4>
+        <p>One or more question's fields are empty.</p> 
+        <p>Please, detele a useless field clicking in red button with X image by the question field.</p> 
+        <p>At least one field must be filled.</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat red" style="color:white">Understood</a>
+    </div>
+</div>
+
+
+
+{% endblock %}

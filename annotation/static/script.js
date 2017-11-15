@@ -12,7 +12,6 @@ var add_another_question = function () {
                                 </div>
                             </div>
                         </div>
-
                     </div>`;
 
     $("#questions_box").append(question)
@@ -35,6 +34,9 @@ var get_next_image = function () {
     // getting validation token
     var token = $("[name=csrfmiddlewaretoken]").val();
 
+    // get pool id
+    var poolId = document.getElementsByName("poolItemId")[0].value;
+
     // getting each question inserted
     var questionList = [];
     var hasEmptyQuestion = false;
@@ -42,17 +44,17 @@ var get_next_image = function () {
         console.log("QUESTION: " + $(this).val().length);
         // if any question field is empty a erro msg is displayed
         if ($(this).val().length === 0) {
-           hasEmptyQuestion = true; 
+            hasEmptyQuestion = true;
         } else {
             questionList.push($(this).val());
         }
     });
 
-    if(hasEmptyQuestion){
+    if (hasEmptyQuestion) {
         $("#modal2").modal('open');
         return;
     }
-    
+
 
     questionList = questionList.join(";");
     var imagePath = $(".responsive-img").attr('src');
@@ -63,9 +65,10 @@ var get_next_image = function () {
         },
         data: {
             'questionList': questionList,
-            'imgPath': imagePath
+            'imgPath': imagePath,
+            'poolItemId': poolId
         },
-        url: '/annotation/store_query/',
+        url: '/experiment/annotation/store_query/',
         success: function (resp) {
             $("#form_content").empty();
             $("#form_content").html(resp);
@@ -81,8 +84,8 @@ var get_next_image = function () {
 }
 
 
-$(document).keypress(function(e) {
-    if(e.which == 13) {
+$(document).keypress(function (e) {
+    if (e.which == 13) {
         get_next_image();
     }
 });

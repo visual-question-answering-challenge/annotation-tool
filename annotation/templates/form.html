@@ -1,15 +1,26 @@
 
+<div class="row" id="counter">
+    <div class="col s8 offset-s3">
+        <h4>Number of Images to Complete the Task: {{num_img_to_finish}} </h4>
+    </div>
+    <div class="col s12">
+        <hr>
+    </div>
+</div>
+
 <div class="row" id="image">
     <div class="col s6  offset-s3">
+        <input type="hidden" name="poolItemId" value={{pool_item_id}} />
         <img class="responsive-img" src="{{img_path}} ">
     </div>
 </div>
+
 
 <div id="questions">
 
     <div class="row">
         <div class="col s12">
-            <h4>Write your search query bellow:</h4>
+            <h4>Write your search query below:</h4>
         </div>
     </div>
 

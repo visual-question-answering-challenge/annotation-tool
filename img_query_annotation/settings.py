@@ -26,7 +26,11 @@ SECRET_KEY = 'd6m=_zcnz_3p)g-1g99-!_xstd3r-hw4$j%4j2==j6x7kzk0*p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['46.101.35.86','localhost']
+ALLOWED_HOSTS = ['localhost',
+                 '127.0.0.1',
+                 '0.0.0.0',
+                 'labcores.ppgi.ufrj.br',
+                 '146.164.3.28']
 
 
 # Application definition
@@ -77,8 +81,12 @@ WSGI_APPLICATION = 'img_query_annotation.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'django-experiment',
+        'USER': 'postgres',
+        'PASSWORD': '123mudar',
+        'HOST': 'localhost',
+        'PORT': ''
     }
 }
 
@@ -120,7 +128,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = './static/'
+LOGIN_URL = '/experiment/login'
+LOGIN_REDIRECT_URL = '/experiment/annotation'
 
-
-LOGIN_URL = '/login'
-LOGIN_REDIRECT_URL = '/annotation'
+# FORCE_SCRIPT_NAME = '/experiment/'
+#SCRIPT_NAME = '/experiment/'
+#USE_X_FORWARDED_HOST = False

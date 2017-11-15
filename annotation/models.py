@@ -6,13 +6,17 @@ from django.contrib.auth.models import User
 
 class Image(models.Model):
     img_path = models.CharField(max_length=500)
-    visual_genome_url = models.URLField()
 
     def __str__(self):
         return self.img_path
 
 
+class PoolItem(models.Model):
+    user = models.ForeignKey(User)
+    image = models.ForeignKey(Image)
+    is_done = models.BooleanField(False)
+
+
 class Annotation(models.Model):
-    fk_user = models.ForeignKey(User)
-    fk_image = models.ForeignKey(Image)
+    pool_item = models.ForeignKey(PoolItem)
     question_text = models.CharField(max_length=600)

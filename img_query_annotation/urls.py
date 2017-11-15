@@ -20,9 +20,9 @@ from django.views.generic import RedirectView
 
 
 urlpatterns = [
-    url(r'^$', RedirectView.as_view(url='/login/')),
-    url(r'^login/$', django.contrib.auth.views.login, {'template_name': 'login.html'}, name='login'),
-    url(r'^logout/$', django.contrib.auth.views.logout, {'next_page': '/login/'}, name='logout'),
-    url(r'^admin/', admin.site.urls),
-    url(r'^annotation/', include('annotation.urls'), name='annotation'),
+    url(r'^experiment/$', RedirectView.as_view(url='/experiment/login/')),
+    url(r'^experiment/login/$', django.contrib.auth.views.login, {'template_name': 'login.html'}, name='login'),
+    url(r'^experiment/logout/$', django.contrib.auth.views.logout, {'next_page': '/login/'}, name='logout'),
+    url(r'^experiment/admin/', admin.site.urls),
+    url(r'^experiment/annotation/', include('annotation.urls'), name='annotation'),
 ]
